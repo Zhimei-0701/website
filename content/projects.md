@@ -4,73 +4,50 @@ issue: "No. 03"
 ---
 # Projects
 
-<!-- Featured projects: each gets a homepage carousel slot + its own page.
+<!-- Each project gets a homepage carousel slot + its own page.
      Assets go in assets/projects/<slug>/ : cover.jpg, loop.mp4 (≤ a few MB), screenshots. -->
 
-## Knowledge-Guided World Models for Irrigation Control
-- **Slug:** irrigation-world-models
-- **Year:** 2026
-- **Role:** Researcher
-- **Tags:** Model-based RL, World models, MPC, Agriculture
-- **One-liner:** Teaching a planner to water crops with a world model that respects physics.
-- **Links:** TODO
-
-### Story
-Long-horizon irrigation planning is costly to simulate and hard to learn from scratch. I built a model-based reinforcement-learning framework that pairs the DNDC process-based crop simulator with a learned, differentiable world model. I compared a black-box RNN dynamics model against a knowledge-guided surrogate with mechanistic inductive biases and soft physical constraints, then planned in closed loop with CEM-based Model Predictive Control. DNDC served as a high-fidelity oracle to evaluate multi-step rollout stability and the trade-off between yield and water use.
-<!-- TODO: add headline result once available. -->
-
-## Self-Supervised Vision (DINOv2-style)
-- **Slug:** ssl-vision
+## SKU Demand Forecasting & Replenishment
+- **Slug:** replenishment-tool
 - **Year:** 2025
-- **Role:** Researcher
-- **Tags:** Self-supervised learning, ViT, Computer vision
-- **One-liner:** Learning to see from 860K images — no labels.
+- **Role:** Sole builder (at Buzzdglobal)
+- **Tags:** Forecasting, Supply chain, Python
+- **One-liner:** Weekly reorders for 35 SKUs across a 72-day ocean lead time.
+- **Links:** none (internal tool)
+
+### Story
+Ordering from China means committing 72 days before stock lands. I built a Python tool that reconciles warehouse inventory with orders from several stores, forecasts demand per SKU with a growth-rate model, and sets reorder points for weekly replenishment of 35 SKUs (30,000+ units). A days-of-stock model with in-transit ETAs and tiered safety stock replaced gut-feel reorders, and along the way it surfaced a data error: sample shipments were being counted as sales during promotions.
+<!-- Showcase idea: anonymized dashboard screenshots / a stock-curve animation for the loop video. -->
+
+## Continual Policy Adaptation for Language Agents
+- **Slug:** clin-scienceworld
+- **Year:** 2026
+- **Role:** Researcher (NYU)
+- **Tags:** LLM agents, Continual learning, Ablation study
+- **One-liner:** 4,800 runs to find what makes an agent learn from its own memory.
 - **Links:** TODO
 
 ### Story
-The goal: learn transferable image representations without any labeled pretraining data. I implemented a DINOv2-style teacher–student Vision Transformer with masked patch prediction and representation regularization, and pretrained it on 860K+ unlabeled images under architectural constraints. The learned features were evaluated by frozen linear probing across several classification benchmarks, showing stable, consistent transfer.
+CLIN is a continual-learning agent that improves from persistent text memory rather than gradient updates. I reproduced it on the ScienceWorld benchmark and ran a 12-configuration ablation (400 episodes each, 4,800 runs) to find which components drive cross-episode learning. The best configuration (Q2 + Failure Abstraction) raised the average score by 9.4 points, cut the fatal-error rate from 24.4% to 11.3%, and lifted the gold-trace rate from 43% to 60%.
 
-## Recalled Experiences of Death — NYU Langone Capstone
+## Recalled Experiences of Death: NYU Langone Capstone
 - **Slug:** red-classification
 - **Year:** 2025
 - **Role:** Capstone team member
 - **Tags:** NLP, LLMs, Hierarchical classification, Healthcare
-- **One-liner:** Mapping near-death narratives into 6 themes and 52 subthemes.
+- **One-liner:** Sorting clinical narratives into 6 themes and 52 subthemes.
 - **Links:** TODO
 
 ### Story
-With NYU Langone, we built a hierarchical NLP framework that classifies near-death experience narratives into 6 primary themes and 52 fine-grained subthemes, using GPT-API annotation validated by domain experts. I curated and denoised 8,620 sentence-level annotations — standardizing the multi-label taxonomy and removing low-signal categories — which lifted baseline accuracy from 0.42 to 0.85. The next stage is a supervised fine-tuning pipeline with OpenAI and open-source LLMs that produces structured thematic output from multi-sentence narratives while keeping context intact.
+With NYU Langone, we built a hierarchical NLP framework that classifies clinical narratives into 6 themes and 52 subthemes, using GPT-API annotation checked by clinicians. I curated 8,620 sentence-level labels, which raised accuracy from a 0.42 baseline to 0.85.
 
-## Dissecting RWKV-7
-- **Slug:** rwkv-dissection
-- **Year:** 2025
-- **Role:** Co-author
-- **Tags:** Interpretability, Long context, RNN-LLMs
-- **One-liner:** How a recurrent LLM remembers long contexts, layer by layer.
-- **Links:** TODO (blog post)
-
-### Story
-We evaluated RWKV-7 models from 0.1B to 2.9B parameters on long-context benchmarks (QuALITY, MuSiQue), measuring accuracy, robustness to distractors, and sensitivity to few-shot ordering. I helped build the analysis pipeline — activation-distribution shifts, sparsity and entropy diagnostics, token attribution with Integrated Gradients and Transformer-LRP — and studied per-layer decay divergence, temporal expressivity, and memory-persistence curves to understand how RWKV-7 encodes long context. I co-wrote the accompanying blog on RWKV's evolution.
-
-## Mitigating Anchoring Bias in LLMs
-- **Slug:** anchoring-bias
-- **Year:** 2025
-- **Role:** Researcher
-- **Tags:** LLMs, Bias, LoRA, Prompting
-- **One-liner:** Prompting plus LoRA to un-anchor language models.
+## Rating Bias & Drivers: 52K RateMyProfessors Records
+- **Slug:** rating-bias
+- **Year:** 2024
+- **Role:** Analyst (NYU)
+- **Tags:** Statistics, Hypothesis testing, Regression
+- **One-liner:** Significant, but negligible: what 52K ratings say about gender bias.
 - **Links:** TODO
 
 ### Story
-Large language models, like people, get pulled toward the first number they see. I combined prompt techniques (Chain-of-Thought, few-shot) with LoRA fine-tuning to reduce anchoring bias, built an expanded set of 30,000 test cases, and evaluated mitigation strategies across Llama 3.2 1B and Llama 3.1 8B using established benchmarks and treatment–control comparisons.
-
----
-
-## Archive
-<!-- Smaller projects: shown as a compact list, no dedicated page. -->
-- **Assessing Professor Effectiveness** (2024) — Regression and significance testing on student ratings; examined gender bias with Welch t-tests and bootstrapping.
-- **News Category Classification: Random Forest vs. DistilBERT** (2023) — 210K+ HuffPost headlines; inspired by manual news tagging at Deloitte.
-- **Movie Recommender Optimization** (2023) — Regularized matrix factorization plus user clustering for targeted campaigns.
-- **World Happiness Analysis** (2023) — Linear-kernel SVR on 2008–2023 Life Ladder data, R² 0.89.
-- **Interactive ML Exhibit** (2023) — Explaining recommender systems to kids, freshmen, and Spanish-speaking parents.
-- **Melbourne Temperature Forecasting** (2023) — SARIMA(0,1,2)×(0,1,1)₁₂ on ten years of daily data.
-- **Gaucho AI Alignment** (2024) — Reading group; rebuilt GPT-2 in PyTorch.
+Using Welch t-tests and 10,000-iteration bootstrap confidence intervals (α = 0.005), I tested 52K professor ratings for gender bias. The gap was statistically significant (p ≈ 4e-12) but negligible in practice: 0.067 stars, Cohen's d 0.06. To model what drives ratings, I used Linear, Ridge and Lasso regression, required at least 6 ratings per professor to reduce small-sample noise, and imputed a feature missing 86% of its values, raising test R² from 0.50 to 0.65.
