@@ -4,10 +4,10 @@ issue: "No. 05"
 ---
 # Contact
 
-<!-- Closing line in the big serif, e.g. "Let's make something together." -->
-**Closing line:** TODO
+**Closing line:** Let's make something worth reading.
 
-- **Email:** TODO
+- **Email:** TODO <!-- resume uses an NYU address; pick one that will last after graduation -->
 - **LinkedIn:** TODO
-- **GitHub:** TODO
-- **Resume PDF:** TODO (optional)
+- **GitHub:** https://github.com/Zhimei-0701
+- **Resume PDF:** TODO (optional, assets/ or public/)
+<!-- Phone and home address intentionally left off the public site. -->
